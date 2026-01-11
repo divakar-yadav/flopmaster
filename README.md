@@ -7,9 +7,12 @@ A modern React application for calculating Floating Point Operations (FLOPs) in 
 - **Interactive Matrix Dimension Input**: Enter dimensions for two matrices (A and B)
 - **Real-time FLOPs Calculation**: Instantly see the total FLOPs, multiplications, and additions
 - **NVIDIA GPU Selection**: Choose from comprehensive list of all NVIDIA GPU models
+- **Precision Type Selection**: Select precision type (FP32, FP16, BF16, INT8, INT4, FP64) for accurate performance estimation
 - **Execution Time Estimation**: Calculate estimated execution time based on selected GPU's peak performance
+- **Searchable GPU Dropdown**: Material-themed searchable dropdown for easy GPU selection
 - **Visual Matrix Representation**: Clear visualization of the matrix multiplication operation
 - **Formula Explanation**: Detailed breakdown of how FLOPs and execution time are calculated
+- **Performance Disclaimer**: Clear disclaimer about peak performance assumptions
 - **Modern UI**: Beautiful, responsive design built with Tailwind CSS
 
 ## GPU Support
@@ -81,13 +84,34 @@ For matrix multiplication A[m × n] × B[n × p] = C[m × p]:
 
 ### Execution Time Calculation
 
-The execution time is estimated based on the selected GPU's theoretical peak performance:
+The execution time is estimated based on the selected GPU's theoretical peak performance and precision type:
 
-- **Time (seconds)**: Total FLOPs ÷ (GPU TFLOPS × 10¹²)
-- The calculation assumes the GPU can achieve its theoretical peak performance
+- **Time (seconds)**: Total FLOPs ÷ (Adjusted GPU TFLOPS × 10¹²)
+- **Adjusted TFLOPS**: Base TFLOPS × Precision Multiplier
+- The calculation assumes the GPU can achieve its theoretical peak performance under optimal conditions
 - Results are displayed in the most appropriate time unit (seconds, milliseconds, microseconds, or nanoseconds)
+
+### Precision Types
+
+- **FP32** (Single Precision): Base performance (1.0x multiplier)
+- **FP16** (Half Precision): ~2x faster
+- **BF16** (BFloat16): ~2x faster
+- **INT8** (8-bit Integer): ~4x faster
+- **INT4** (4-bit Integer): ~8x faster
+- **FP64** (Double Precision): ~2x slower
+
+## Performance Disclaimer
+
+Peak performance numbers assume optimal conditions including:
+- Massive parallelism
+- Fully occupied SMs (Streaming Multiprocessors)
+- Large tiles
+- Tensor Core–friendly shapes
+- No memory stalls
+- No launch overhead
+
+Actual performance may vary based on workload characteristics, memory bandwidth, kernel efficiency, and system configuration.
 
 ## License
 
 MIT
-
