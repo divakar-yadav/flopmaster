@@ -73,6 +73,26 @@ function App() {
         ) : (
           <ParallelismTypes />
         )}
+
+        {/* Footer */}
+        <footer className="mt-12 pt-8 pb-6 border-t border-gray-200">
+          <div className="text-center">
+            <p className="text-gray-600 text-sm">
+              Made with <span className="text-red-500">❤️</span> by{' '}
+              <a
+                href="https://hpc.lab.wisc.edu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+              >
+                UWM HPC Lab
+              </a>
+            </p>
+            <p className="text-gray-500 text-xs mt-2">
+              FLOPs Master - Matrix Multiplication FLOPs Calculator & Distributed Computing Guide
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   )
