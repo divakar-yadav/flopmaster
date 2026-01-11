@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# SSL/HTTPS configuration
+# Netlify automatically provides SSL certificates for custom domains
+# Ensure your domain DNS is correctly configured:
+# - Add a CNAME record pointing to your Netlify site
+# - Or add an A record for apex domain
+# Then enable SSL in Netlify dashboard: Site settings > Domain management > HTTPS
+
